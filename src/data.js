@@ -11,11 +11,11 @@ export const artist = {
 };
 
 export const merch = [
-  { name: "T-shirt", price: "25€", image: "merch_tshirt.png", href: "#" },
-  { name: "Sweat", price: "45€", image: "merch_sweat.png", href: "#" },
-  { name: "Casquette", price: "20€", image: "merch_casquette.png", href: "#" },
-  { name: "Mug", price: "12€", image: "merch_mug.png", href: "#" },
-  { name: "Affiche", price: "15€", image: "merch_affiche2.png", href: "#" },
+  { name: "T-shirts", price: "25€", image: "merch_tshirt.png", href: "#" },
+  { name: "Sweats", price: "45€", image: "merch_sweat.png", href: "#" },
+  { name: "Casquettes", price: "20€", image: "merch_casquette.png", href: "#" },
+  { name: "Mugs", price: "12€", image: "merch_mug.png", href: "#" },
+  { name: "Affiches", price: "15€", image: "merch_affiche2.png", href: "#" },
 ];
 
 export const albums = [
@@ -24,7 +24,7 @@ export const albums = [
     year: 2026,
     cover: "cover_idm.png",
     description:
-      "Quelques lignes sur l'album : d'où il vient, comment il a été enregistré, ce qu'il raconte.",
+      "L'album 'L'Iceberg de Magma' est une exploration sonore qui fusionne des éléments de différents styles de rap. Chaque piste est conçue pour emmener l'auditeur dans un voyage émotionnel à travers des paysages sonores riches et variés.",
     links: [
       { label: "Écouter sur Spotify", href: "https://open.spotify.com/" },
       { label: "Écouter sur Apple Music", href: "https://music.apple.com/" },
