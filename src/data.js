@@ -11,11 +11,63 @@ export const artist = {
 };
 
 export const merch = [
-  { name: "T-shirts", price: "25€", image: "merch_tshirt.png", href: "#" },
-  { name: "Sweats", price: "45€", image: "merch_sweat.png", href: "#" },
-  { name: "Casquettes", price: "20€", image: "merch_casquette.png", href: "#" },
-  { name: "Mugs", price: "12€", image: "merch_mug.png", href: "#" },
-  { name: "Affiches", price: "15€", image: "merch_affiche2.png", href: "#" },
+  {
+    slug: "t-shirt",
+    name: "T-shirts",
+    price: "25€",
+    colors: [
+      { name: "Noir", image: "merch_tshirt_noir.png" },
+      { name: "Blanc", image: "merch_tshirt_blanc.png" },
+    ],
+    description: "T-shirt 100% coton, coupe unisexe, sérigraphie du logo.",
+    sizes: ["S", "M", "L", "XL"],
+    href: "#",
+  },
+  {
+    slug: "sweat",
+    name: "Hoodies",
+    price: "45€",
+    colors: [
+      { name: "Noir", image: "merch_sweat_noir.png" },
+      { name: "Gris chiné", image: "merch_sweat_gris.png" },
+    ],
+    description: "Sweat à capuche, molleton épais, broderie poitrine.",
+    sizes: ["S", "M", "L", "XL"],
+    href: "#",
+  },
+  {
+    slug: "casquette",
+    name: "Casquettes",
+    price: "20€",
+    colors: [
+      { name: "Noir", image: "merch_casquette_noir.png" },
+      { name: "Beige", image: "merch_casquette_beige.png" },
+    ],
+    description: "Casquette ajustable, broderie avant.",
+    sizes: ["Taille unique"],
+    href: "#",
+  },
+  {
+    slug: "mug",
+    name: "Mugs",
+    price: "12€",
+    image: "merch_mug.png",
+    description: "Mug céramique 325 ml, impression résistante au lave-vaisselle.",
+    sizes: [],
+    href: "#",
+  },
+  {
+    slug: "affiche",
+    name: "Affiches",
+    price: "15€",
+    colors: [
+      { name: "Affiche 1", image: "merch_affiche1.png" },
+      { name: "Affiche 2", image: "merch_affiche2.png" },
+    ],
+    description: "Affiche A3, papier mat 250g.",
+    sizes: ["A3"],
+    href: "#",
+  },
 ];
 
 export const albums = [
