@@ -10,6 +10,14 @@ export const artist = {
   ],
 };
 
+export const merch = [
+  { name: "T-shirt", price: "25€", image: "merch_tshirt.png", href: "#" },
+  { name: "Sweat", price: "45€", image: "merch_sweat.png", href: "#" },
+  { name: "Casquette", price: "20€", image: "merch_casquette.png", href: "#" },
+  { name: "Mug", price: "12€", image: "merch_mug.png", href: "#" },
+  { name: "Affiche", price: "15€", image: "merch_affiche2.png", href: "#" },
+];
+
 export const albums = [
   {
     title: "L'Iceberg de Magma",

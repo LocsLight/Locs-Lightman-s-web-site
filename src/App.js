@@ -10,6 +10,8 @@ import Tracks from "./components/Tracks";
 import Videos from "./components/Videos";
 import News from "./components/News";
 import Footer from "./components/Footer";
+import Merch from "./components/Merch";
+
 import "./App.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -38,6 +40,7 @@ export default function App() {
       <main>
         <Hero />
         <Albums />
+        <Merch/>
         <Tracks />
         <Videos />
         <News />

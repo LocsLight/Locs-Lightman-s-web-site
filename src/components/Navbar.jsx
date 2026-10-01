@@ -1,7 +1,8 @@
 import { artist } from "../data";
 
 const links = [
- { href: "#album", label: "Albums" },
+  { href: "#merch", label: "Merch" },
+  { href: "#album", label: "Albums" },
   { href: "#titres", label: "Titres" },
   { href: "#videos", label: "Vidéos" },
   { href: "#actus", label: "Actus" },

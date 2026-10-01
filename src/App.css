@@ -96,6 +96,49 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .hero__mask { display: inline-block; overflow: hidden; padding-bottom: .08em; }
 .hero__char { display: inline-block; }
 
+/* Merch */
+.merch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 2rem;
+}
+
+.merch__item a {
+  display: block;
+  text-decoration: none;
+}
+
+.merch__image {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.merch__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+
+.merch__item a:hover .merch__image img {
+  transform: scale(1.04);
+}
+
+.merch__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: .75rem;
+  font-family: var(--titre);
+  font-weight: 600;
+}
+
+.merch__price {
+  color: var(--brume);
+}
+
 /* Album */
 .albums .album:not(:last-child) {
   margin-bottom: clamp(3rem, 8vw, 6rem);
