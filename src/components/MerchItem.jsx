@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { merch } from "../data";
+import { trackEvent } from "../analytics";
 
 const images = require.context("../assets", false, /\.(png|jpe?g|webp)$/);
 const getImage = (filename) => images(`./${filename}`);
@@ -57,9 +58,21 @@ export default function MerchItem() {
               ))}
             </ul>
           )}
-          <a className="merch-item__buy" href={item.href} target="_blank" rel="noreferrer">
-            Acheter
-          </a>
+          <a
+          className="merch-item__buy"
+          href={item.href}
+          target="_blank"
+          rel="noreferrer"
+          onClick={() =>
+            trackEvent("click_acheter", {
+              item_name: item.name,
+              item_color: item.colors ? item.colors[colorIndex].name : undefined,
+              value: item.price,
+            })
+          }
+        >
+          Acheter
+        </a>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { merch } from "../data";
+import { trackEvent } from "../analytics";
 
 const images = require.context("../assets", false, /\.(png|jpe?g|webp)$/);
 const getImage = (filename) => images(`./${filename}`);
@@ -13,7 +14,10 @@ export default function Merch() {
           const thumb = item.colors ? item.colors[0].image : item.image;
           return (
             <li className="merch__item" key={item.slug}>
-              <Link to={`/merch/${item.slug}`}>
+              <Link
+                to={`/merch/${item.slug}`}
+                onClick={() => trackEvent("select_merch_item", { item_name: item.name })}
+              >
                 <div className="merch__image">
                   <img src={getImage(thumb)} alt={item.name} />
                 </div>
