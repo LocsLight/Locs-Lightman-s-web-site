@@ -1,7 +1,7 @@
 import * as CookieConsent from "vanilla-cookieconsent";
 import "vanilla-cookieconsent/dist/cookieconsent.css";
 
-const GA_MEASUREMENT_ID = "G-XXXXXXXXXX"; // remplace par ton identifiant
+const GA_MEASUREMENT_ID = "G-GBGZPQRCK8"; // remplace par ton identifiant
 
 const loadGoogleAnalytics = () => {
   if (document.getElementById("ga-script")) return;
