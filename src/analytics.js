@@ -1,4 +1,4 @@
-export const GA_MEASUREMENT_ID = "G-GBGZPQRCK8";
+export const GA_MEASUREMENT_ID = "G-8TWCRH2CVP";
 
 export const trackPageView = (path) => {
   if (typeof window.gtag !== "function") return;
