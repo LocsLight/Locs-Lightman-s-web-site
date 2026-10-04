@@ -1,9 +1,11 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { initCookieConsent } from "./cookieConsent";
+import { trackPageView } from "./analytics";
+import { CartProvider } from "./context/CartContext";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -14,9 +16,10 @@ import Videos from "./components/Videos";
 import News from "./components/News";
 import Footer from "./components/Footer";
 import MerchItem from "./components/MerchItem";
+import Cart from "./components/Cart";
 import "./App.css";
-import { useLocation } from "react-router-dom";
-import { trackPageView } from "./analytics";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function PageTracker() {
   const location = useLocation();
@@ -28,7 +31,15 @@ function PageTracker() {
   return null;
 }
 
-gsap.registerPlugin(ScrollTrigger);
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  return null;
+}
 
 function Home() {
   return (
@@ -62,14 +73,18 @@ export default function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <PageTracker />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/merch/:slug" element={<MerchItem />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <PageTracker />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/merch/:slug" element={<MerchItem />} />
+        </Routes>
+        <Footer />
+        <Cart />
+      </BrowserRouter>
+    </CartProvider>
   );
 }

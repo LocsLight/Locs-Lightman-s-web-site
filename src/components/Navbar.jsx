@@ -1,4 +1,5 @@
 import { artist } from "../data";
+import { useCart } from "../context/CartContext";
 
 const links = [
   { href: "#merch", label: "Merch" },
@@ -10,6 +11,8 @@ const links = [
 ];
 
 export default function Navbar() {
+  const { totalItems, openCart } = useCart();
+
   return (
     <header className="navbar">
       <a className="navbar__brand" href="#top">
@@ -24,6 +27,9 @@ export default function Navbar() {
           ))}
         </ul>
       </nav>
+      <button type="button" className="navbar__cart" onClick={openCart}>
+        Panier{totalItems > 0 && <span className="navbar__cart-count">{totalItems}</span>}
+      </button>
     </header>
   );
 }

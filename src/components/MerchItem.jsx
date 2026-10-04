@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { merch } from "../data";
 import { trackEvent } from "../analytics";
+import { useCart } from "../context/CartContext";
 
 const images = require.context("../assets", false, /\.(png|jpe?g|webp)$/);
 const getImage = (filename) => images(`./${filename}`);
@@ -10,6 +11,8 @@ export default function MerchItem() {
   const { slug } = useParams();
   const item = merch.find((m) => m.slug === slug);
   const [colorIndex, setColorIndex] = useState(0);
+  const [sizeIndex, setSizeIndex] = useState(0);
+  const { addItem } = useCart();
 
   if (!item) {
     return (
@@ -21,6 +24,24 @@ export default function MerchItem() {
   }
 
   const currentImage = item.colors ? item.colors[colorIndex].image : item.image;
+  const selectedColor = item.colors ? item.colors[colorIndex].name : undefined;
+  const selectedSize = item.sizes.length > 0 ? item.sizes[sizeIndex] : undefined;
+
+  const handleAddToCart = () => {
+    addItem({
+      slug: item.slug,
+      name: item.name,
+      price: item.price,
+      image: currentImage,
+      color: selectedColor,
+      size: selectedSize,
+    });
+    trackEvent("add_to_cart", {
+      item_name: item.name,
+      item_color: selectedColor,
+      item_size: selectedSize,
+    });
+  };
 
   return (
     <section className="section merch-item">
@@ -52,27 +73,23 @@ export default function MerchItem() {
           )}
 
           {item.sizes.length > 0 && (
-            <ul className="merch-item__sizes">
-              {item.sizes.map((s) => (
-                <li key={s}>{s}</li>
+            <div className="merch-item__sizes-select">
+              {item.sizes.map((s, i) => (
+                <button
+                  key={s}
+                  type="button"
+                  className={i === sizeIndex ? "merch-item__size is-active" : "merch-item__size"}
+                  onClick={() => setSizeIndex(i)}
+                >
+                  {s}
+                </button>
               ))}
-            </ul>
+            </div>
           )}
-          <a
-          className="merch-item__buy"
-          href={item.href}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() =>
-            trackEvent("click_acheter", {
-              item_name: item.name,
-              item_color: item.colors ? item.colors[colorIndex].name : undefined,
-              value: item.price,
-            })
-          }
-        >
-          Acheter
-        </a>
+
+          <button type="button" className="merch-item__buy" onClick={handleAddToCart}>
+            Ajouter au panier
+          </button>
         </div>
       </div>
     </section>
