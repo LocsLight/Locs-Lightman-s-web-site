@@ -1,8 +1,33 @@
+import { useState } from "react";
 import { useCart } from "../context/CartContext";
+import { createCheckoutSession } from "../lib/checkout";
 
 export default function Cart() {
   const { items, isOpen, closeCart, updateQuantity, removeItem, totalItems, totalPrice } =
     useCart();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleCheckout = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const checkoutItems = items.map((line) => ({
+        name: line.name,
+        color: line.color,
+        size: line.size,
+        price: parseFloat(String(line.price).replace(",", ".").replace(/[^\d.]/g, "")),
+        image: line.image,
+        quantity: line.quantity,
+        printfulVariantId: line.printfulVariantId,
+      }));
+      const url = await createCheckoutSession(checkoutItems);
+      window.location.href = url;
+    } catch (err) {
+      setError("Le paiement n'a pas pu démarrer. Réessaie dans un instant.");
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -75,8 +100,14 @@ export default function Cart() {
                 <span>Total</span>
                 <strong>{totalPrice.toFixed(2)} €</strong>
               </div>
-              <button type="button" className="cart-panel__checkout" disabled>
-                Passer commande (bientôt disponible)
+              {error && <p className="cart-panel__error">{error}</p>}
+              <button
+                type="button"
+                className="cart-panel__checkout"
+                onClick={handleCheckout}
+                disabled={loading}
+              >
+                {loading ? "Redirection..." : "Passer commande"}
               </button>
             </div>
           </>

@@ -162,6 +162,15 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
   width: 100%; padding: .9rem; border: 0;
   background: var(--brume); color: var(--fond); font-weight: 700; cursor: not-allowed;
 }
+.cart-panel__error {
+  color: #ff6b6b;
+  font-size: .85rem;
+  margin: 0 0 .75rem;
+}
+.cart-panel__checkout:disabled {
+  opacity: .6;
+  cursor: wait;
+}
 
 /* Merch */
 .merch-item__sizes-select { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.5rem 0; }
