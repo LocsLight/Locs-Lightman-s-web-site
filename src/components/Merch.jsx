@@ -2,16 +2,14 @@ import { Link } from "react-router-dom";
 import { merch } from "../data";
 import { trackEvent } from "../analytics";
 
-const images = require.context("../assets", false, /\.(png|jpe?g|webp)$/);
-const getImage = (filename) => images(`./${filename}`);
-
 export default function Merch() {
   return (
     <section className="section" id="merch">
       <h2>Merch</h2>
       <ul className="merch">
         {merch.map((item) => {
-          const thumb = item.colors ? item.colors[0].image : item.image;
+          const minPrice = Math.min(...item.variants.map((v) => parseFloat(v.price)));
+          const thumb = item.variants[0].image;
           return (
             <li className="merch__item" key={item.slug}>
               <Link
@@ -19,11 +17,11 @@ export default function Merch() {
                 onClick={() => trackEvent("select_merch_item", { item_name: item.name })}
               >
                 <div className="merch__image">
-                  <img src={getImage(thumb)} alt={item.name} />
+                  <img src={thumb} alt={item.name} />
                 </div>
                 <div className="merch__info">
                   <span className="merch__name">{item.name}</span>
-                  <span className="merch__price">{item.price}</span>
+                  <span className="merch__price">dès {minPrice.toFixed(2)} €</span>
                 </div>
               </Link>
             </li>

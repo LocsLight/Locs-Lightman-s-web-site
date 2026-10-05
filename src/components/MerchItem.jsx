@@ -4,15 +4,18 @@ import { merch } from "../data";
 import { trackEvent } from "../analytics";
 import { useCart } from "../context/CartContext";
 
-const images = require.context("../assets", false, /\.(png|jpe?g|webp)$/);
-const getImage = (filename) => images(`./${filename}`);
-
 export default function MerchItem() {
   const { slug } = useParams();
   const item = merch.find((m) => m.slug === slug);
-  const [colorIndex, setColorIndex] = useState(0);
-  const [sizeIndex, setSizeIndex] = useState(0);
   const { addItem } = useCart();
+
+  const colors = item ? [...new Set(item.variants.map((v) => v.color))] : [];
+  const [selectedColor, setSelectedColor] = useState(colors[0]);
+
+  const sizesForColor = item
+    ? item.variants.filter((v) => v.color === selectedColor).map((v) => v.size)
+    : [];
+  const [selectedSize, setSelectedSize] = useState(sizesForColor[0]);
 
   if (!item) {
     return (
@@ -23,23 +26,34 @@ export default function MerchItem() {
     );
   }
 
-  const currentImage = item.colors ? item.colors[colorIndex].image : item.image;
-  const selectedColor = item.colors ? item.colors[colorIndex].name : undefined;
-  const selectedSize = item.sizes.length > 0 ? item.sizes[sizeIndex] : undefined;
+  const currentVariant =
+    item.variants.find((v) => v.color === selectedColor && v.size === selectedSize) ||
+    item.variants.find((v) => v.color === selectedColor) ||
+    item.variants[0];
+
+  const handleColorChange = (color) => {
+    setSelectedColor(color);
+    // Si la taille actuelle n'existe pas dans la nouvelle couleur, reprends la première disponible
+    const availableSizes = item.variants.filter((v) => v.color === color).map((v) => v.size);
+    if (!availableSizes.includes(selectedSize)) {
+      setSelectedSize(availableSizes[0]);
+    }
+  };
 
   const handleAddToCart = () => {
     addItem({
       slug: item.slug,
       name: item.name,
-      price: item.price,
-      image: currentImage,
-      color: selectedColor,
-      size: selectedSize,
+      price: `${currentVariant.price} €`,
+      image: currentVariant.image,
+      color: currentVariant.color,
+      size: currentVariant.size,
+      printfulVariantId: currentVariant.printfulVariantId,
     });
     trackEvent("add_to_cart", {
       item_name: item.name,
-      item_color: selectedColor,
-      item_size: selectedSize,
+      item_color: currentVariant.color,
+      item_size: currentVariant.size,
     });
   };
 
@@ -50,38 +64,42 @@ export default function MerchItem() {
       </Link>
       <div className="merch-item__layout">
         <div className="merch-item__image">
-          <img src={getImage(currentImage)} alt={item.name} />
+          <img src={currentVariant.image} alt={item.name} />
         </div>
         <div className="merch-item__info">
           <h2>{item.name}</h2>
-          <p className="merch-item__price">{item.price}</p>
-          <p>{item.description}</p>
+          <p className="merch-item__price">{currentVariant.price} €</p>
+          {item.description && <p>{item.description}</p>}
 
-          {item.colors && (
+          {colors.length > 1 && (
             <div className="merch-item__colors">
-              {item.colors.map((c, i) => (
+              {colors.map((color) => (
                 <button
-                  key={c.name}
+                  key={color}
                   type="button"
-                  className={i === colorIndex ? "merch-item__color is-active" : "merch-item__color"}
-                  onClick={() => setColorIndex(i)}
+                  className={
+                    color === selectedColor ? "merch-item__color is-active" : "merch-item__color"
+                  }
+                  onClick={() => handleColorChange(color)}
                 >
-                  {c.name}
+                  {color}
                 </button>
               ))}
             </div>
           )}
 
-          {item.sizes.length > 0 && (
+          {sizesForColor.length > 1 && (
             <div className="merch-item__sizes-select">
-              {item.sizes.map((s, i) => (
+              {sizesForColor.map((size) => (
                 <button
-                  key={s}
+                  key={size}
                   type="button"
-                  className={i === sizeIndex ? "merch-item__size is-active" : "merch-item__size"}
-                  onClick={() => setSizeIndex(i)}
+                  className={
+                    size === selectedSize ? "merch-item__size is-active" : "merch-item__size"
+                  }
+                  onClick={() => setSelectedSize(size)}
                 >
-                  {s}
+                  {size}
                 </button>
               ))}
             </div>

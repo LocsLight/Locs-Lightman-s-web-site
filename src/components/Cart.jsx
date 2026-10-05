@@ -1,8 +1,5 @@
 import { useCart } from "../context/CartContext";
 
-const images = require.context("../assets", false, /\.(png|jpe?g|webp)$/);
-const getImage = (filename) => images(`./${filename}`);
-
 export default function Cart() {
   const { items, isOpen, closeCart, updateQuantity, removeItem, totalItems, totalPrice } =
     useCart();
@@ -34,7 +31,7 @@ export default function Cart() {
             <ul className="cart-panel__items">
               {items.map((line) => (
                 <li className="cart-item" key={line.lineId}>
-                  <img className="cart-item__image" src={getImage(line.image)} alt={line.name} />
+                  <img className="cart-item__image" src={line.image} alt={line.name} />
                   <div className="cart-item__info">
                     <span className="cart-item__name">{line.name}</span>
                     {(line.color || line.size) && (
