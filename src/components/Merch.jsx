@@ -8,7 +8,6 @@ export default function Merch() {
       <h2>Merch</h2>
       <ul className="merch">
         {merch.map((item) => {
-          const minPrice = Math.min(...item.variants.map((v) => parseFloat(v.price)));
           const thumb = item.variants[0].image;
           return (
             <li className="merch__item" key={item.slug}>
@@ -21,7 +20,7 @@ export default function Merch() {
                 </div>
                 <div className="merch__info">
                   <span className="merch__name">{item.name}</span>
-                  <span className="merch__price">dès {minPrice.toFixed(2)} €</span>
+                  <span className="merch__price">{item.price} €</span>
                 </div>
               </Link>
             </li>

@@ -75,6 +75,7 @@ export const merch = [
     "slug": "t-shirt-iceberg-de-magma",
     "name": "T-Shirt Iceberg de Magma",
     "description": "",
+    "price": "25.00",
     "variants": [
       {
         "color": "Black",
@@ -271,6 +272,7 @@ export const merch = [
     "slug": "sweatshirt-iceberg-de-magma",
     "name": "Sweatshirt Iceberg de Magma",
     "description": "",
+    "price": "50.00",
     "variants": [
       {
         "color": "Black",
@@ -383,6 +385,7 @@ export const merch = [
     "slug": "hoodie-iceberg-de-magma",
     "name": "Hoodie Iceberg de Magma",
     "description": "",
+    "price": "65.00",
     "variants": [
       {
         "color": "Black",
@@ -495,6 +498,7 @@ export const merch = [
     "slug": "mug-iceberg-de-magma",
     "name": "Mug Iceberg de Magma",
     "description": "",
+    "price": "20.00",
     "variants": [
       {
         "color": "Black",
@@ -516,6 +520,7 @@ export const merch = [
     "slug": "casquette-iceberg-de-magma",
     "name": "Casquette Iceberg de Magma",
     "description": "",
+    "price": "30.00",
     "variants": [
       {
         "color": "Black",

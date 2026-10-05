@@ -159,18 +159,28 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .cart-panel__footer { padding: 1.25rem; border-top: 1px solid var(--brume); }
 .cart-panel__total { display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: 1rem; }
 .cart-panel__checkout {
-  width: 100%; padding: .9rem; border: 0;
-  background: var(--brume); color: var(--fond); font-weight: 700; cursor: not-allowed;
+  width: 100%;
+  padding: .9rem;
+  border: 0;
+  background: var(--encre);
+  color: var(--fond);
+  font-weight: 700;
+  cursor: pointer;
+}
+.cart-panel__checkout:hover {
+  background: var(--rose);
+}
+.cart-panel__checkout:disabled {
+  background: var(--brume);
+  cursor: wait;
 }
 .cart-panel__error {
   color: #ff6b6b;
   font-size: .85rem;
   margin: 0 0 .75rem;
 }
-.cart-panel__checkout:disabled {
-  opacity: .6;
-  cursor: wait;
-}
+
+
 
 /* Merch */
 .merch-item__sizes-select { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.5rem 0; }
@@ -280,6 +290,29 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
   background: var(--encre);
   color: var(--fond);
   border-color: var(--encre);
+}
+
+/* Thanks */
+.thanks-page {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+.thanks-page h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+.thanks-page p {
+  max-width: 40ch;
+  color: var(--brume);
+}
+.thanks-page__back {
+  color: var(--encre);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 /* Album */

@@ -44,7 +44,7 @@ export default function MerchItem() {
     addItem({
       slug: item.slug,
       name: item.name,
-      price: `${currentVariant.price} €`,
+      price: `${item.price} €`,
       image: currentVariant.image,
       color: currentVariant.color,
       size: currentVariant.size,
@@ -68,7 +68,7 @@ export default function MerchItem() {
         </div>
         <div className="merch-item__info">
           <h2>{item.name}</h2>
-          <p className="merch-item__price">{currentVariant.price} €</p>
+          <p className="merch-item__price">{item.price} €</p>
           {item.description && <p>{item.description}</p>}
 
           {colors.length > 1 && (

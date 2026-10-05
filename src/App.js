@@ -17,6 +17,7 @@ import News from "./components/News";
 import Footer from "./components/Footer";
 import MerchItem from "./components/MerchItem";
 import Cart from "./components/Cart";
+import Thanks from "./components/Thanks";
 import "./App.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -81,6 +82,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/merch/:slug" element={<MerchItem />} />
+          <Route path="/merci" element={<Thanks />} />
         </Routes>
         <Footer />
         <Cart />
