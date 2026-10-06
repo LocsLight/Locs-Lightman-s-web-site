@@ -28,14 +28,15 @@ export const albums = [
 ];
 
 export const tracks = [
-  { title: "Hey ya", duration: "3:42", album: "L'Iceberg de Magma" },
-  { title: "Britney", duration: "4:05", album: "L'Iceberg de Magma" },
-  { title: "Gorgée d'eau", duration: "2:58", album: "L'Iceberg de Magma" },
-  { title: "Tsunami", duration: "3:31", album: "L'Iceberg de Magma" },
-  { title: "Spaceship", duration: "5:12", album: "L'Iceberg de Magma" },
-  { title: "NBA", duration: "5:12", album: "L'Iceberg de Magma" },
-  { title: "What's poppin'", duration: "5:12", album: "L'Iceberg de Magma" },
-  { title: "Reviens me voir", duration: "5:12", album: "L'Iceberg de Magma" },
+  { title: "Hey ya", duration: "2:45", album: "L'Iceberg de Magma" },
+  { title: "Britney", duration: "2:32", album: "L'Iceberg de Magma" },
+  { title: "Gorgée d'eau", duration: "2:08", album: "L'Iceberg de Magma" },
+  { title: "Mayday", duration: "2:40", album: "L'Iceberg de Magma" },
+  { title: "Tsunami", duration: "2:15", album: "L'Iceberg de Magma" },
+  { title: "Spaceship", duration: "2:05", album: "L'Iceberg de Magma" },
+  { title: "NBA", duration: "1:42", album: "L'Iceberg de Magma" },
+  { title: "What's poppin'", duration: "1:49", album: "L'Iceberg de Magma" },
+  { title: "Reviens me voir", duration: "2:30", album: "L'Iceberg de Magma" },
   { title: "Bulma", duration: "3:19", cover: "cover_bulma.png", spotifyId: "0NT5SQQXrcZQeWeBEoCmgj" },
   { title: "À l'antipode", duration: "2:45", cover: "cover_alantipode.png", spotifyId: "73lHNMgP2M1V5FraK4fBdS" },
 ];
