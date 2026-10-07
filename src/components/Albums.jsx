@@ -36,7 +36,7 @@ export default function Albums() {
 
   return (
     <section className="section albums" id="album" ref={root}>
-      <h2>Albums</h2>
+      <h2>Albums/EPs</h2>
       {albums.map((album) => (
         <article className="album" key={album.title}>
           <div className="album__cover">

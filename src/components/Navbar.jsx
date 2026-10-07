@@ -3,7 +3,7 @@ import { useCart } from "../context/CartContext";
 
 const links = [
   { href: "#merch", label: "Merch" },
-  { href: "#album", label: "Albums" },
+  { href: "#album", label: "Albums/EPs" },
   { href: "#titres", label: "Titres" },
   { href: "#videos", label: "Vidéos" },
   { href: "#actus", label: "Actus" },

@@ -17,7 +17,7 @@ export const albums = [
     year: 2026,
     cover: "cover_idm.png",
     description:
-      "L'album 'L'Iceberg de Magma' est une exploration sonore qui fusionne des éléments de différents styles de rap. Chaque piste est conçue pour emmener l'auditeur dans un voyage émotionnel à travers des paysages sonores riches et variés.",
+      "L'EP 'L'Iceberg de Magma' est une exploration sonore qui fusionne des éléments de différents styles de rap. Chaque piste est conçue pour emmener l'auditeur dans un voyage émotionnel à travers des paysages sonores riches et variés.",
     links: [
       { label: "Écouter sur Spotify", href: "https://open.spotify.com/" },
       { label: "Écouter sur Apple Music", href: "https://music.apple.com/" },
