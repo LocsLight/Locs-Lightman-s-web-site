@@ -1,7 +1,7 @@
 // Remplace ces contenus par les tiens.
 export const artist = {
   name: "Locs Lightman",
-  tagline: "Nouvel album, bientôt disponible partout.",
+  tagline: "Nouvel EP, bientôt disponible partout.",
   email: "contact@locslightman.com",
   socials: [
     { label: "Instagram", href: "https://instagram.com/" },
