@@ -1,5 +1,19 @@
 export const merch = [
   {
+    "slug": "casquette-iceberg-de-magma",
+    "name": "Casquette Iceberg de Magma",
+    "description": "",
+    "variants": [
+      {
+        "color": "Black",
+        "size": "One size",
+        "price": "19.00",
+        "image": "https://files.cdn.printful.com/files/0b9/0b93673d1d22ea6ccfcdaf7853756a83_preview.png",
+        "printfulVariantId": 5560167462
+      }
+    ]
+  },
+  {
     "slug": "t-shirt-iceberg-de-magma",
     "name": "T-Shirt Iceberg de Magma",
     "description": "",
@@ -437,55 +451,6 @@ export const merch = [
         "price": "11.50",
         "image": "https://files.cdn.printful.com/files/902/90284302071e9a55ecae328845bb9b0a_preview.png",
         "printfulVariantId": 5549741495
-      }
-    ]
-  },
-  {
-    "slug": "casquette-iceberg-de-magma",
-    "name": "Casquette Iceberg de Magma",
-    "description": "",
-    "variants": [
-      {
-        "color": "Black",
-        "size": "S/M",
-        "price": "20.00",
-        "image": "https://files.cdn.printful.com/files/a11/a118dc00e614b21b6f01eeed87d2d1e4_preview.png",
-        "printfulVariantId": 5549696418
-      },
-      {
-        "color": "Black",
-        "size": "L/XL",
-        "price": "20.00",
-        "image": "https://files.cdn.printful.com/files/a11/a118dc00e614b21b6f01eeed87d2d1e4_preview.png",
-        "printfulVariantId": 5549696419
-      },
-      {
-        "color": "Khaki",
-        "size": "S/M",
-        "price": "20.00",
-        "image": "https://files.cdn.printful.com/files/e66/e667c09750dc50f28307dbacb51df362_preview.png",
-        "printfulVariantId": 5549696420
-      },
-      {
-        "color": "Khaki",
-        "size": "L/XL",
-        "price": "20.00",
-        "image": "https://files.cdn.printful.com/files/e66/e667c09750dc50f28307dbacb51df362_preview.png",
-        "printfulVariantId": 5549696421
-      },
-      {
-        "color": "White",
-        "size": "S/M",
-        "price": "20.00",
-        "image": "https://files.cdn.printful.com/files/8c0/8c06f32144d9ee1f57b5b0b66e561328_preview.png",
-        "printfulVariantId": 5549696422
-      },
-      {
-        "color": "White",
-        "size": "L/XL",
-        "price": "20.00",
-        "image": "https://files.cdn.printful.com/files/8c0/8c06f32144d9ee1f57b5b0b66e561328_preview.png",
-        "printfulVariantId": 5549696423
       }
     ]
   }
