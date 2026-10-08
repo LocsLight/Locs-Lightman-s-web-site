@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { merch } from "../data";
 import { trackEvent } from "../analytics";
 import { useCart } from "../context/CartContext";
@@ -57,8 +58,21 @@ export default function MerchItem() {
     });
   };
 
+  const pageTitle = `${item.name} — LocsLightman`;
+  const pageDescription = item.description || `${item.name}, merch officiel LocsLightman. ${item.price} €.`;
+
   return (
     <section className="section merch-item">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={currentVariant.image} />
+        <meta property="og:type" content="product" />
+        <meta property="og:url" content={`https://locslightman.com/merch/${item.slug}`} />
+        <link rel="canonical" href={`https://locslightman.com/merch/${item.slug}`} />
+      </Helmet>
       <Link to="/#merch" className="merch-item__back">
         ← Retour au merch
       </Link>
