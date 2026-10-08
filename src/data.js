@@ -4,12 +4,11 @@ export const artist = {
   tagline: "Nouvel EP, bientôt disponible partout.",
   email: "contact@locslightman.com",
   socials: [
-    { label: "Instagram", href: "https://instagram.com/" },
-    { label: "Spotify", href: "https://open.spotify.com/" },
-    { label: "YouTube", href: "https://youtube.com/" },
+    { label: "Instagram", href: "https://instagram.com/locs.lightman/" },
+    { label: "Spotify", href: "https://open.spotify.com/artist/5swMP0C4FElOE8szcRRVos" },
+    { label: "YouTube", href: "https://youtube.com/@locslightman" },
   ],
 };
-
 
 export const albums = [
   {

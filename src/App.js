@@ -33,7 +33,14 @@ const musicGroupSchema = {
   "@type": "MusicGroup",
   name: SITE_NAME,
   url: "https://locslightman.com/",
+  image: "https://locslightman.com/og-cover.jpg",
   genre: "Rap",
+  // Profils officiels : permettent à Google de relier ces comptes à ce site.
+  sameAs: [
+    "https://open.spotify.com/artist/5swMP0C4FElOE8szcRRVos",
+    "https://www.youtube.com/@locslightman",
+    "https://www.instagram.com/locs.lightman/",
+  ],
 };
 
 function PageTracker() {
