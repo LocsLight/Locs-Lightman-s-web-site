@@ -273,7 +273,7 @@ export const merch = [
     "slug": "sweatshirt-iceberg-de-magma",
     "name": "Sweatshirt Iceberg de Magma",
     "description": "",
-    "price": "50.00",
+    "price": "35.00",
     "variants": [
       {
         "color": "Black",
@@ -386,7 +386,7 @@ export const merch = [
     "slug": "hoodie-iceberg-de-magma",
     "name": "Hoodie Iceberg de Magma",
     "description": "",
-    "price": "65.00",
+    "price": "50.00",
     "variants": [
       {
         "color": "Black",
