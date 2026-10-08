@@ -5,6 +5,8 @@ import { merch } from "../data";
 import { trackEvent } from "../analytics";
 import { useCart } from "../context/CartContext";
 
+const SITE_NAME = "Locs Lightman";
+
 export default function MerchItem() {
   const { slug } = useParams();
   const item = merch.find((m) => m.slug === slug);
@@ -21,7 +23,11 @@ export default function MerchItem() {
   if (!item) {
     return (
       <section className="section">
-        <h2>Produit introuvable</h2>
+        <Helmet>
+          <title>{`Produit introuvable — ${SITE_NAME}`}</title>
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
+        <h1>Produit introuvable</h1>
         <Link to="/">Retour à l'accueil</Link>
       </section>
     );
@@ -58,8 +64,27 @@ export default function MerchItem() {
     });
   };
 
-  const pageTitle = `${item.name} — LocsLightman`;
-  const pageDescription = item.description || `${item.name}, merch officiel LocsLightman. ${item.price} €.`;
+  const pageTitle = `${item.name} — ${SITE_NAME}`;
+  const pageDescription =
+    item.description || `${item.name}, merch officiel ${SITE_NAME}. ${item.price} €.`;
+  const pageUrl = `https://locslightman.com/merch/${item.slug}`;
+
+  // Données structurées : permettent à Google d'afficher le prix dans les résultats
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: item.name,
+    image: [...new Set(item.variants.map((v) => v.image))],
+    description: pageDescription,
+    brand: { "@type": "Brand", name: SITE_NAME },
+    offers: {
+      "@type": "Offer",
+      url: pageUrl,
+      priceCurrency: "EUR",
+      price: item.price,
+      availability: "https://schema.org/InStock",
+    },
+  };
 
   return (
     <section className="section merch-item">
@@ -70,8 +95,9 @@ export default function MerchItem() {
         <meta property="og:description" content={pageDescription} />
         <meta property="og:image" content={currentVariant.image} />
         <meta property="og:type" content="product" />
-        <meta property="og:url" content={`https://locslightman.com/merch/${item.slug}`} />
-        <link rel="canonical" href={`https://locslightman.com/merch/${item.slug}`} />
+        <meta property="og:url" content={pageUrl} />
+        <link rel="canonical" href={pageUrl} />
+        <script type="application/ld+json">{JSON.stringify(productSchema)}</script>
       </Helmet>
       <Link to="/#merch" className="merch-item__back">
         ← Retour au merch
@@ -81,7 +107,7 @@ export default function MerchItem() {
           <img src={currentVariant.image} alt={item.name} />
         </div>
         <div className="merch-item__info">
-          <h2>{item.name}</h2>
+          <h1>{item.name}</h1>
           <p className="merch-item__price">{item.price} €</p>
           {item.description && <p>{item.description}</p>}
 

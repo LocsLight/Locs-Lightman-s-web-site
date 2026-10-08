@@ -19,9 +19,22 @@ import Footer from "./components/Footer";
 import MerchItem from "./components/MerchItem";
 import Cart from "./components/Cart";
 import Thanks from "./components/Thanks";
+import NotFound from "./components/NotFound";
 import "./App.css";
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Nom du site utilisé dans les titres et les données structurées.
+// Change-le ici pour l'harmoniser partout (ex. "LocsLightman").
+const SITE_NAME = "Locs Lightman";
+
+const musicGroupSchema = {
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  name: SITE_NAME,
+  url: "https://locslightman.com/",
+  genre: "Rap",
+};
 
 function PageTracker() {
   const location = useLocation();
@@ -47,19 +60,13 @@ function Home() {
   return (
     <main>
       <Helmet>
-        <title>LocsLightman — Artiste rap indépendant à Strasbourg</title>
+        <title>{`${SITE_NAME} — Artiste rap indépendant à Strasbourg`}</title>
         <meta
           name="description"
           content="Site officiel de LocsLightman. Découvre l'EP L'Iceberg de Magma, les derniers clips, le merch et les dates à venir."
         />
-        <meta property="og:title" content="LocsLightman" />
-        <meta
-          property="og:description"
-          content="Découvre l'EP L'Iceberg de Magma, les derniers clips et le merch officiel."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://locslightman.com/" />
         <link rel="canonical" href="https://locslightman.com/" />
+        <script type="application/ld+json">{JSON.stringify(musicGroupSchema)}</script>
       </Helmet>
       <Hero />
       <Merch />
@@ -90,19 +97,20 @@ export default function App() {
   }, []);
 
   return (
-      <CartProvider>
-        <BrowserRouter>
-          <ScrollToTop />
-          <PageTracker />
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/merch/:slug" element={<MerchItem />} />
-            <Route path="/merci" element={<Thanks />} />
-          </Routes>
-          <Footer />
-          <Cart />
-        </BrowserRouter>
-      </CartProvider>
+    <CartProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <PageTracker />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/merch/:slug" element={<MerchItem />} />
+          <Route path="/merci" element={<Thanks />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+        <Cart />
+      </BrowserRouter>
+    </CartProvider>
   );
 }
