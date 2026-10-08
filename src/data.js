@@ -386,7 +386,7 @@ export const merch = [
     "slug": "hoodie-iceberg-de-magma",
     "name": "Hoodie Iceberg de Magma",
     "description": "",
-    "price": "50.00",
+    "price": "55.50",
     "variants": [
       {
         "color": "Black",
