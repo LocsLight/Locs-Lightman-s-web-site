@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { HelmetProvider, Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -47,15 +47,15 @@ function Home() {
   return (
     <main>
       <Helmet>
-        <title>LocsLightman — Nouvel album L'Iceberg de Magma</title>
+        <title>LocsLightman — Artiste rap indépendant à Strasbourg</title>
         <meta
           name="description"
-          content="Site officiel de LocsLightman. Découvre l'album L'Iceberg de Magma, les derniers clips, le merch et les dates à venir."
+          content="Site officiel de LocsLightman. Découvre l'EP L'Iceberg de Magma, les derniers clips, le merch et les dates à venir."
         />
         <meta property="og:title" content="LocsLightman" />
         <meta
           property="og:description"
-          content="Découvre l'album L'Iceberg de Magma, les derniers clips et le merch officiel."
+          content="Découvre l'EP L'Iceberg de Magma, les derniers clips et le merch officiel."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://locslightman.com/" />
@@ -90,7 +90,6 @@ export default function App() {
   }, []);
 
   return (
-    <HelmetProvider>
       <CartProvider>
         <BrowserRouter>
           <ScrollToTop />
@@ -105,6 +104,5 @@ export default function App() {
           <Cart />
         </BrowserRouter>
       </CartProvider>
-    </HelmetProvider>
   );
 }
