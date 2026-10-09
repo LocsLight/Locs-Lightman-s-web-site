@@ -19,6 +19,7 @@ import Footer from "./components/Footer";
 import MerchItem from "./components/MerchItem";
 import Cart from "./components/Cart";
 import Thanks from "./components/Thanks";
+import Orders from "./components/Orders";
 import NotFound from "./components/NotFound";
 import "./App.css";
 
@@ -113,6 +114,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/merch/:slug" element={<MerchItem />} />
           <Route path="/merci" element={<Thanks />} />
+          <Route path="/commandes" element={<Orders />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

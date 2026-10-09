@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { createCheckoutSession } from "../lib/checkout";
 
@@ -113,6 +114,12 @@ export default function Cart() {
             </div>
           </>
         )}
+
+        <div className="cart-panel__orders">
+          <Link to="/commandes" onClick={closeCart}>
+            Suivre ma commande
+          </Link>
+        </div>
       </aside>
     </>
   );

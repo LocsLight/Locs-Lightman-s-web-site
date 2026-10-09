@@ -11,7 +11,9 @@ export async function createCheckoutSession(items) {
     },
     body: JSON.stringify({
       items,
-      successUrl: `${window.location.origin}/merci`,
+      // {CHECKOUT_SESSION_ID} est remplacé par Stripe : la page /merci peut ainsi
+      // afficher la référence de commande.
+      successUrl: `${window.location.origin}/merci?session_id={CHECKOUT_SESSION_ID}`,
       cancelUrl: `${window.location.origin}/`,
     }),
   });
