@@ -21,7 +21,7 @@ export function CartProvider({ children }) {
   // Un article = une combinaison précise (produit + couleur + taille)
   const makeLineId = (slug, color, size) => [slug, color, size].filter(Boolean).join("--");
 
-  const addItem = ({ slug, name, price, image, color, size }) => {
+  const addItem = ({ slug, name, price, image, color, size, printfulVariantId }) => {
     const lineId = makeLineId(slug, color, size);
     setItems((prev) => {
       const existing = prev.find((line) => line.lineId === lineId);
@@ -30,7 +30,10 @@ export function CartProvider({ children }) {
           line.lineId === lineId ? { ...line, quantity: line.quantity + 1 } : line
         );
       }
-      return [...prev, { lineId, slug, name, price, image, color, size, quantity: 1 }];
+      return [
+        ...prev,
+        { lineId, slug, name, price, image, color, size, printfulVariantId, quantity: 1 },
+      ];
     });
     setIsOpen(true);
   };

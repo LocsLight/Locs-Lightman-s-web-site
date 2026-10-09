@@ -13,6 +13,7 @@ export default function Cart() {
     setError(null);
     try {
       const checkoutItems = items.map((line) => ({
+        slug: line.slug,
         name: line.name,
         color: line.color,
         size: line.size,

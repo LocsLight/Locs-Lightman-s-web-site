@@ -18,8 +18,8 @@ export const albums = [
     description:
       "L'EP L'Iceberg de Magma' est une exploration sonore qui fusionne des éléments de différents styles de rap. Chaque piste est conçue pour emmener l'auditeur dans un voyage émotionnel à travers des paysages sonores riches et variés.",
     links: [
-      { label: "Écouter sur Spotify", href: "https://open.spotify.com/" },
-      { label: "Écouter sur Apple Music", href: "https://music.apple.com/" },
+      { label: "Écouter sur Spotify", href: "https://open.spotify.com/artist/5swMP0C4FElOE8szcRRVos" },
+      { label: "Écouter sur Apple Music", href: "https://music.apple.com/us/artist/locs-lightman/1893406271" },
       { label: "Acheter le vinyle", href: "#" },
     ],
   },

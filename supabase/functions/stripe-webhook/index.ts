@@ -8,6 +8,11 @@ const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY")!, {
 const webhookSecret = Deno.env.get("STRIPE_WEBHOOK_SECRET")!;
 const printfulApiKey = Deno.env.get("PRINTFUL_API_KEY")!;
 
+const printfulHeaders = {
+  Authorization: `Bearer ${printfulApiKey}`,
+  "Content-Type": "application/json",
+};
+
 Deno.serve(async (req) => {
   const signature = req.headers.get("stripe-signature");
   const body = await req.text();
@@ -28,6 +33,21 @@ Deno.serve(async (req) => {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
 
+    // Identifiant de commande unique côté Printful (le payment_intent Stripe).
+    // Il sert aussi à éviter les doublons si Stripe rappelle le webhook.
+    const externalId = String(session.payment_intent || session.id);
+
+    const existing = await fetch(
+      `https://api.printful.com/orders/@${encodeURIComponent(externalId)}`,
+      { headers: printfulHeaders }
+    );
+    if (existing.ok) {
+      console.log("Commande déjà créée chez Printful, on ignore :", externalId);
+      return new Response(JSON.stringify({ received: true, duplicate: true }), {
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
     const lineItems = await stripe.checkout.sessions.listLineItems(session.id, {
       expand: ["data.price.product"],
     });
@@ -40,20 +60,24 @@ Deno.serve(async (req) => {
       };
     });
 
+    if (printfulItems.some((i) => !Number.isInteger(i.sync_variant_id) || i.sync_variant_id <= 0)) {
+      // Réponse 200 : inutile que Stripe retente, ça ne réparera pas les données.
+      console.error("Variante Printful manquante, session :", session.id);
+      return new Response(JSON.stringify({ received: true, error: "variant_missing" }), {
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
     const shipping = session.shipping_details;
     const customer = session.customer_details;
 
-    // Commande créée en "draft" chez Printful (pas auto-confirmée) :
-    // tu la vérifies et la valides toi-même dans ton tableau de bord Printful
-    // avant qu'elle ne parte en fabrication. Ajoute "?confirm=1" à l'URL
-    // ci-dessous si tu préfères un envoi 100% automatique plus tard.
-    const orderRes = await fetch("https://api.printful.com/orders", {
+    // ?confirm=1 : la commande est validée tout de suite et part en fabrication.
+    // Printful débite alors le moyen de paiement enregistré sur ton compte Printful.
+    const orderRes = await fetch("https://api.printful.com/orders?confirm=1", {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${printfulApiKey}`,
-        "Content-Type": "application/json",
-      },
+      headers: printfulHeaders,
       body: JSON.stringify({
+        external_id: externalId,
         recipient: {
           name: shipping?.name || customer?.name,
           address1: shipping?.address?.line1,
@@ -74,7 +98,12 @@ Deno.serve(async (req) => {
       console.error("Erreur création commande Printful :", JSON.stringify(orderData));
       return new Response("Erreur lors de la création de la commande Printful", { status: 500 });
     }
-    console.log("Commande Printful créée :", orderData.result?.id);
+    console.log(
+      "Commande Printful créée et confirmée :",
+      orderData.result?.id,
+      "statut :",
+      orderData.result?.status
+    );
   }
 
   return new Response(JSON.stringify({ received: true }), {
