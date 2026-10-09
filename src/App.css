@@ -179,8 +179,66 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
   font-size: .85rem;
   margin: 0 0 .75rem;
 }
-
-
+ 
+/* Lien discret « Suivre ma commande » en bas du panier */
+.cart-panel__orders {
+  margin-top: auto;
+  padding: .9rem 1.25rem;
+  border-top: 1px solid var(--surface);
+  text-align: center;
+}
+.cart-panel__orders a {
+  color: var(--brume);
+  font-size: .8rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.cart-panel__orders a:hover { color: var(--encre); }
+ 
+/* Référence de commande sur /merci */
+.thanks-page__reference strong {
+  color: var(--encre);
+  letter-spacing: .08em;
+}
+ 
+/* Commandes */
+.orders-page {
+  min-height: 70vh;
+  max-width: 34rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 7rem;
+}
+.orders-page h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+.orders-page__intro { color: var(--brume); margin: 0; }
+.orders-form { display: grid; gap: 1rem; }
+.orders-form label { display: grid; gap: .4rem; font-size: .9rem; color: var(--brume); }
+.orders-form input {
+  padding: .8rem;
+  background: var(--surface);
+  border: 1px solid var(--brume);
+  color: var(--encre);
+  font: inherit;
+}
+.orders-form button {
+  padding: .9rem;
+  border: 0;
+  background: var(--encre);
+  color: var(--fond);
+  font-weight: 700;
+  cursor: pointer;
+}
+.orders-form button:hover { background: var(--rose); }
+.orders-form button:disabled { background: var(--brume); cursor: wait; }
+.orders-page__error { color: #ff6b6b; margin: 0; }
+.orders-result { border: 1px solid var(--brume); padding: 1.25rem; display: grid; gap: .6rem; }
+.orders-result p { margin: 0; }
+.orders-result__ref { color: var(--brume); letter-spacing: .08em; font-size: .85rem; }
+.orders-result__status { font-family: var(--titre); font-size: 1.6rem; }
+.orders-result__items { list-style: none; margin: 0; padding: 0; color: var(--brume); }
+.orders-result__tracking a { color: var(--encre); text-decoration: underline; text-underline-offset: 3px; }
 
 /* Merch */
 .merch-item__sizes-select { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.5rem 0; }
