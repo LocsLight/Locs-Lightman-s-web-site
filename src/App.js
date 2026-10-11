@@ -25,6 +25,12 @@ import "./App.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Le navigateur ne doit pas restaurer l'ancienne position de scroll
+// (rechargement, retour arrière, onglet restauré) : on arrive toujours en haut.
+if ("scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
+
 // Nom du site utilisé dans les titres et les données structurées.
 // Change-le ici pour l'harmoniser partout (ex. "LocsLightman").
 const SITE_NAME = "Locs Lightman";
@@ -43,8 +49,17 @@ function ScrollToTop() {
   const location = useLocation();
 
   useEffect(() => {
+    // Si l'URL contient une ancre (ex. /#merch), on laisse Lenis y aller.
+    if (location.hash) return;
     window.scrollTo(0, 0);
-  }, [location]);
+    // Certaines images/animations changent la hauteur de la page après le
+    // chargement : on re-force le haut une fois la page entièrement chargée.
+    if (document.readyState !== "complete") {
+      const onLoad = () => window.scrollTo(0, 0);
+      window.addEventListener("load", onLoad, { once: true });
+      return () => window.removeEventListener("load", onLoad);
+    }
+  }, [location.pathname, location.hash]);
 
   return null;
 }
