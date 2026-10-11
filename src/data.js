@@ -29,8 +29,8 @@ export const albums = [
 export const tracks = [
   { title: "Hey ya", duration: "2:45", album: "L'Iceberg de Magma" },
   { title: "Britney", duration: "2:32", album: "L'Iceberg de Magma" },
+  { title: "Mayday", duration: "2:40", album: "L'Iceberg de Magma" }, 
   { title: "Gorgée d'eau", duration: "2:08", album: "L'Iceberg de Magma" },
-  { title: "Mayday", duration: "2:40", album: "L'Iceberg de Magma" },
   { title: "Tsunami", duration: "2:15", album: "L'Iceberg de Magma" },
   { title: "Spaceship", duration: "2:05", album: "L'Iceberg de Magma" },
   { title: "NBA", duration: "1:42", album: "L'Iceberg de Magma" },
