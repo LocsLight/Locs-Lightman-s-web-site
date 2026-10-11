@@ -74,7 +74,6 @@ function Home() {
           content="Site officiel de LocsLightman. Découvre l'EP L'Iceberg de Magma, les derniers clips, le merch et les dates à venir."
         />
         <link rel="canonical" href="https://locslightman.com/" />
-        <script type="application/ld+json">{JSON.stringify(musicGroupSchema)}</script>
       </Helmet>
       <Hero />
       <Merch />
