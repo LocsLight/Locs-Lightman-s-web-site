@@ -13,7 +13,7 @@ export const artist = {
 export const albums = [
   {
     title: "L'Iceberg de Magma",
-    year: 2026,
+    year: 2027,
     cover: "cover_idm.png",
     description:
       "L'EP L'Iceberg de Magma' est une exploration sonore qui fusionne des éléments de différents styles de rap. Chaque piste est conçue pour emmener l'auditeur dans un voyage émotionnel à travers des paysages sonores riches et variés.",
