@@ -51,9 +51,9 @@ export const videos = [
 
 export const news = [
   {
-    date: "2026-10-15",
+    date: "2027-01-15",
     title: "Sortie de l'album",
-    excerpt: "L'album sera disponible sur toutes les plateformes.",
+    excerpt: "L'EP sera disponible sur toutes les plateformes.",
     href: "#",
   },
   {
@@ -74,7 +74,7 @@ export const merch = [
   {
     "slug": "t-shirt-iceberg-de-magma",
     "name": "T-Shirt Iceberg de Magma",
-    "description": "",
+    "description": "T-shirt officiel Locs Lightman, collection L'Iceberg de Magma. Imprimé à la demande. Disponible en noir, gris chiné foncé et blanc, du XS au 5XL.",
     "price": "25.00",
     "variants": [
       {
@@ -271,7 +271,7 @@ export const merch = [
   {
     "slug": "sweatshirt-iceberg-de-magma",
     "name": "Sweatshirt Iceberg de Magma",
-    "description": "",
+    "description": "Sweat officiel Locs Lightman, collection L'Iceberg de Magma. Imprimé à la demande. Disponible en noir, gris et blanc, du S au 2XL.",
     "price": "35.00",
     "variants": [
       {
@@ -384,7 +384,7 @@ export const merch = [
   {
     "slug": "hoodie-iceberg-de-magma",
     "name": "Hoodie Iceberg de Magma",
-    "description": "",
+    "description": "Hoodie officiel Locs Lightman, collection L'Iceberg de Magma. Imprimé à la demande. Disponible en noir, vert bouteille et blanc, du S au 2XL.",
     "price": "55.50",
     "variants": [
       {
@@ -497,7 +497,7 @@ export const merch = [
   {
     "slug": "mug-iceberg-de-magma",
     "name": "Mug Iceberg de Magma",
-    "description": "",
+    "description": "Mug noir officiel Locs Lightman, collection L'Iceberg de Magma. Imprimé à la demande. Disponible en 11 oz (environ 33 cl) et 15 oz (environ 44 cl).",
     "price": "20.00",
     "variants": [
       {
