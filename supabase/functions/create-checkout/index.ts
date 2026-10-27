@@ -15,11 +15,11 @@ const corsHeaders = {
 // Quand tu changes un prix dans data.js, change-le aussi ici, puis redéploie
 // la fonction : npx supabase functions deploy create-checkout --project-ref zytaxkjqatrdlxqxcmlw --no-verify-jwt
 const PRICES: Record<string, number> = {
-  "t-shirt-iceberg-de-magma": 25.0,
-  "sweatshirt-iceberg-de-magma": 35.0,
-  "hoodie-iceberg-de-magma": 55.5,
-  "mug-iceberg-de-magma": 20.0,
-  "casquette-iceberg-de-magma": 35.0,
+  "t-shirt-iceberg-de-magma": 18.0,
+  "sweatshirt-iceberg-de-magma": 25.0,
+  "hoodie-iceberg-de-magma": 50.0,
+  "mug-iceberg-de-magma": 15.0,
+  "casquette-iceberg-de-magma": 30.0,
 };
 
 // Seules ces origines sont acceptées pour les pages de retour Stripe.
