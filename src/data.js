@@ -75,7 +75,7 @@ export const merch = [
     "slug": "t-shirt-iceberg-de-magma",
     "name": "T-Shirt Iceberg de Magma",
     "description": "T-shirt officiel Locs Lightman, collection L'Iceberg de Magma. Imprimé à la demande. Disponible en noir, gris chiné foncé et blanc, du XS au 5XL.",
-    "price": "25.00",
+    "price": "18.00",
     "variants": [
       {
         "color": "Black",
@@ -385,7 +385,7 @@ export const merch = [
     "slug": "hoodie-iceberg-de-magma",
     "name": "Hoodie Iceberg de Magma",
     "description": "Hoodie officiel Locs Lightman, collection L'Iceberg de Magma. Imprimé à la demande. Disponible en noir, vert bouteille et blanc, du S au 2XL.",
-    "price": "55.50",
+    "price": "50.00",
     "variants": [
       {
         "color": "Black",
