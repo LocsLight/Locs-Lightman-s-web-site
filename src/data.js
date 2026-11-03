@@ -36,6 +36,7 @@ export const tracks = [
   { title: "NBA", duration: "1:42", album: "L'Iceberg de Magma" },
   { title: "What's poppin'", duration: "1:49", album: "L'Iceberg de Magma" },
   { title: "Reviens me voir", duration: "2:30", album: "L'Iceberg de Magma" },
+  { title: "Pineapple Skunk", duration: "3:12", cover: "cover_pineapple_skunk.png", spotifyId: "6jgd9In79QICbOufNcO18A" },
   { title: "Bulma", duration: "3:19", cover: "cover_bulma.png", spotifyId: "0NT5SQQXrcZQeWeBEoCmgj" },
   { title: "À l'antipode", duration: "2:45", cover: "cover_alantipode.png", spotifyId: "73lHNMgP2M1V5FraK4fBdS" },
 ];
