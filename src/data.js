@@ -53,8 +53,14 @@ export const videos = [
 export const news = [
   {
     date: "2027-01-15",
-    title: "Sortie de l'album",
+    title: "Sortie de l'EP",
     excerpt: "L'EP sera disponible sur toutes les plateformes.",
+    href: "#",
+  },
+  {
+    date: "2026-11-02",
+    title: "Pineapple Skunk en ligne",
+    excerpt: "Sortie de Pineapple Skunk sur toutes les plateformes.",
     href: "#",
   },
   {
